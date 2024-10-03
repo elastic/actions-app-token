@@ -149,4 +149,5 @@ if __name__ == '__main__':
     assert token, 'Token not returned!'
 
     print(f"::add-mask::{token}")
-    print(f"::set-output name=app_token::{token}")
+    with open(os.environ.get('GITHUB_OUTPUT'), "a") as f:
+        f.write("app_token={}\n".format(token))
